@@ -26,9 +26,9 @@ function Nav() {
 <div className='lg:hidden text-2xl text-pink-600 p-4 cursor-pointer relative'>
   <h1 onClick={()=>setMenu(!menu)}><CiMenuFries /></h1>
 {menu&&(
-<div className='absolute right-0  mt-2 w-107 bg-white border rounded shadow-md flex flex-col'>
-<button onClick={switchintoLogin} className='px-4 py-2 text-left border-b border-gray-600'>Login</button>
-<button onClick={switchintoSignup} className='px-4 py-2 text-left'>Signup</button>
+<div className='absolute right-0  mt-2 w-100 bg-white border rounded shadow-md flex flex-col'>
+<button onClick={switchintoLogin} className='px-4 py-2 text-[1rem] text-left border-b border-gray-600'>Login</button>
+<button onClick={switchintoSignup} className='px-4 py-2 text-[1rem] text-left'>Signup</button>
 </div>
 )}
 
