@@ -17,7 +17,12 @@ if(finduser){
 localStorage.setItem("user_key",username)
 navigate("/home")
 }else{
-    alert("username or password is invalid")
+    Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "username or password is invalid"  
+          });
+
     return
 }
 

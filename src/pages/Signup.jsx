@@ -17,34 +17,62 @@ const navigate = useNavigate();
 
 const saveuserInfo=()=>{
 
+
+if(username===""||password===""||confirmPass===""||email===""){
+     Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "filed is empety",
+
+        });
+
+return;
+}
+
+if(username.length<=3){
+    Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "username must be more than 3 characters",
+
+        });
+return
+}
+
+
+if (!email.includes("@") || !email.includes(".com")) {
+    
+ Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Invalid email format.must be include @,.com",
+
+        });
+
+      return;
+    }
+if(password.length<6){
+     Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "password must be more than 6 characters!",
+
+        });
+    // alert("password must be more than 6 characters")
+}
+
 if(password!==confirmPass){
      Swal.fire({
           icon: "error",
           title: "Oops...",
           text: "password not match!",
-        //   footer: '<a href="#">Why do I have this issue?</a>'
+
         });
 
 return
 }
 
-if(password.length<6){
-    alert("password must be more than 6 characters")
-}
-if(username===""||password===""||confirmPass===""||email===""){
-alert("filed is empety")
-return;
-}
 
-if(username.length<=3){
-alert("username must be more than 3 characters")
-return
-}
-
-if (!email.includes("@") || !email.includes(".com")) {
-      alert("Invalid email format.");
-      return;
-    }
 
  axios.post(apiUrl,{
 username,
@@ -53,7 +81,7 @@ password
  })
     .then((res)=>{
         console.log(res.data)
-        alert("create account successfully!")
+         Swal.fire("create account successfully!")
 navigate("/login")
   })
     .catch((err)=>{

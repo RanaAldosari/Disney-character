@@ -24,7 +24,6 @@ const searchBtn = showAllPost.filter((item) =>
       icon: "error",
       title: "Oops...",
       text: "No character found!",
-      footer: '<a href="#">Why do I have this issue?</a>'
     });
     }
     
@@ -35,7 +34,12 @@ const searchBtn = showAllPost.filter((item) =>
 let user= localStorage.getItem("user_key")
 const uploadInfoform=()=>{
 if (charName.trim() === "" || charImage.trim() === "" || gender === "") {
-    alert("Please fill all fields")
+   Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "Please fill all fields",
+    });
+    // alert("Please fill all fields")
     return;
   }
 
@@ -61,7 +65,7 @@ setGender("");
     .catch((err)=>{
         console.log("there is an eroor",err)
     })
-alert("upload Success")
+     Swal.fire("upload Success!")
 }
 
 useEffect(()=>{
@@ -80,7 +84,7 @@ const deleteBtn=(id)=>{
     axios.delete(`${apiUrl}/${id}`)
     .then(()=>{
         setAhowAllPost((post)=>post.filter(post=>post.id!==id))
-        alert("post delete successfully")
+         Swal.fire("post delete successfully")
     })
     .catch((err)=>{
         console.log(err)
