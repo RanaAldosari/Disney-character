@@ -11,19 +11,19 @@ function Main() {
     const [search, setSearch] = useState("")
 
 let apiUrl="https://68219a91259dad2655afc3cc.mockapi.io/api/users/user"
-
+// const user=loca
 
 // search
 const searchBtn = showAllPost.filter((item) =>
-      item.charName.toLowerCase().includes(search.toLowerCase())
+      item.charName&&item.charName.toLowerCase().includes(search.toLowerCase())
     )
 
 useEffect(()=>{
-    if(searchBtn.length===0){
+    if(search.length===0||search==="" && searchBtn.length===0){
         Swal.fire({
       icon: "error",
       title: "Oops...",
-      text: "No character found!",
+      text: "Character Not Found!",
     });
     }
     
