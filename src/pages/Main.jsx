@@ -14,11 +14,11 @@ let apiUrl="https://68219a91259dad2655afc3cc.mockapi.io/api/users/user"
 
 
 // search
-
-useEffect(()=>{
 const searchBtn = showAllPost.filter((item) =>
       item.charName.toLowerCase().includes(search.toLowerCase())
     )
+
+useEffect(()=>{
     if(searchBtn.length===0){
         Swal.fire({
       icon: "error",
@@ -27,7 +27,7 @@ const searchBtn = showAllPost.filter((item) =>
     });
     }
     
-},[search,showAllPost])
+},[search,searchBtn])
 
 
 // upload to pg&db
