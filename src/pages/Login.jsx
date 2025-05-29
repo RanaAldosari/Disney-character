@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router'
+import Swal from 'sweetalert2';
 function Login() {
 const navigate=useNavigate()
 const[username,setUasername]=useState("")
@@ -12,7 +13,7 @@ axios.get(apiUrl)
     const user=res.data
 const finduser=user.find((user)=>user.username===username&&user.password===password)
 if(finduser){
-alert("login successfully !")
+ Swal.fire("login successfully !")
 localStorage.setItem("user_key",username)
 navigate("/home")
 }else{

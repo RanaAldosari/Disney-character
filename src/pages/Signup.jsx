@@ -3,6 +3,7 @@ import axios from 'axios'
 import { useState } from 'react'
 import { useNavigate } from 'react-router'
 import Login from './Login'
+import Swal from 'sweetalert2';
 function Signup() {
     const[username,setUsername]=useState("")
     const[email,setEmail]=useState("")
@@ -17,7 +18,13 @@ const navigate = useNavigate();
 const saveuserInfo=()=>{
 
 if(password!==confirmPass){
-alert("password not match!")
+     Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "password not match!",
+        //   footer: '<a href="#">Why do I have this issue?</a>'
+        });
+
 return
 }
 

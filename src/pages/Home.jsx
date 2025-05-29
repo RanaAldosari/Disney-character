@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
 import Signup from './Signup'
+import Swal from 'sweetalert2';
 function Home() {
     const[charName,setCharName]=useState("")
     const [charImage,setCharImage]=useState("")
@@ -13,7 +14,7 @@ let apiUrl="https://68219a91259dad2655afc3cc.mockapi.io/api/users/user"
 let navigate = useNavigate();
 // switch to login
 const uploadInfoform=()=>{
-alert("you need to login")
+Swal.fire("you need to login");
 navigate("/signup")
 }
 

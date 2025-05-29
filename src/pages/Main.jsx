@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import Swal from 'sweetalert2';
 import { CiSearch } from "react-icons/ci";
 function Main() {
     const[charName,setCharName]=useState("")
@@ -13,9 +14,21 @@ let apiUrl="https://68219a91259dad2655afc3cc.mockapi.io/api/users/user"
 
 
 // search
+
+useEffect(()=>{
 const searchBtn = showAllPost.filter((item) =>
-  item.charName.toLowerCase().includes(search.toLowerCase())
-)
+      item.charName.toLowerCase().includes(search.toLowerCase())
+    )
+    if(searchBtn.length===0){
+        Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "No character found!",
+      footer: '<a href="#">Why do I have this issue?</a>'
+    });
+    }
+    
+},[search,showAllPost])
 
 
 // upload to pg&db
